@@ -1,0 +1,98 @@
+@import "_variables";
+
+.navbar-default {
+    background: $white;
+    border: none;
+}
+
+.navbar-brand {
+    float: none;
+    &.logo {
+        .logo-img {
+            height: 100px;
+            display: inline-block;
+        }
+    }
+}
+
+.logo-title {
+    font-size: 40px;
+}
+
+.navbar-default {
+    border-bottom: 2px solid gray;
+    box-shadow: 0 -35px 20px 40px rgba(0,0,0,.3);
+
+    .nav {
+        @media screen and (max-width: 768px) {
+            margin: 0 -15px;
+        }
+        & > li {
+            text-align: center;
+
+            & > a {
+                padding-top: 25px;
+                color: $brand-blue;
+
+                &:hover {
+                    color: #003b64;
+                    background: rgba(255, 255, 255, .3);
+                }
+
+                border: 0 solid transparent;
+                border-top-width: 5px;
+                @media screen and (max-width: 768px) {
+                    border-bottom: 1px solid $gray-lighter;
+                    border-top: none;
+                }
+
+            }
+
+            &.active {
+                & > a {
+                    color: $brand-red;
+
+                    &:hover {
+                        color: #003b64;
+                    }
+
+                    &:focus {
+                        background: transparent;
+                        color: $brand-red;
+                    }
+                    background: transparent;
+                    border-color: $brand-red;
+                    @media screen and (max-width: 768px) {
+                        border-color: $gray-lighter;
+                        background: rgba(0,0,0,.05);
+                    }
+                }
+            }
+        }
+        .item-label {
+            display: block;
+
+        }
+        .caret {
+            float: right;
+            margin-top: calc(2em / 2);
+        }
+        .dropdown-menu {
+            min-width: inherit;
+            padding: 10px;
+
+            li {
+                text-align: right;
+
+                a {
+                    padding: 10px;
+
+                    span.glyphicon {
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+}

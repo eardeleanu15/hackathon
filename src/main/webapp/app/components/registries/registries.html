@@ -1,0 +1,38 @@
+<h2>Open Registries</h2>
+<p class="lead registries-active-lead">The open medical registries allow you to add your medical case under a certain category. We will follow-up on the process to ensure you get the best possible medical care.</p>
+<div class="registries-active">
+    <uib-accordion>
+        <div ng-repeat="registry in $ctrl.registries track by registry.id" uib-accordion-group is-open="$first" class="panel-default" heading="{{registry.name}}">
+            <div class="fast-action">
+                <a href="#" ui-sref="medical-case.new-registry({id:registry.id})" class="action add-case">
+                    <span class="fa fa-plus-circle fa-3x"></span> Add case
+                </a>
+            </div>
+            <div class="description" ng-bind="registry.description"></div>
+            <div class="row registry-stats" has-any-authority="ROLE_ADMIN,ROLE_DOCTOR,ROLE_PROVIDER">
+                <div class="col-md-2">
+                    Cases: <span class="stat-value" ng-bind="registry.numberOfCases"></span>
+                </div>
+                <div class="col-md-3">
+                    Created on: <span class="stat-value" ng-bind="registry.createdon | date:'mediumDate'"></span>
+                </div>
+            </div>
+
+            <div class="actions" has-any-authority="ROLE_ADMIN,ROLE_DOCTOR,ROLE_PROVIDER">
+                <a href="#" ui-sref="registry-detail({id:registry.id})" class="action add-case">
+                    <span class="fa fa-eye"></span> View
+                </a>
+                <a href="#" ui-sref="registry.edit({id:registry.id})" class="action add-case">
+                    <span class="fa fa-edit"></span> Modify
+                </a>
+                <a href="/api/export/registry/data/{{registry.id}}" class="action add-case">
+                    <span class="fa fa-file-excel-o"></span> XLS
+                </a>
+                <a href="/api/export/registry/template/{{registry.id}}" class="action add-case">
+                    <span class="glyphicon glyphicon-save-file"></span> TEMPLATE
+                </a>
+            </div>
+        </div>
+    </uib-accordion>
+    <p class="panel-danger" ng-if="$ctrl.registries.length == 0">No registries defined yet</p>
+</div>

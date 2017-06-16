@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "registryField",
+            "otherEntityName": "registryField",
+            "otherEntityRelationshipName": "registry"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "medicalCase",
+            "otherEntityName": "medicalCase",
+            "otherEntityRelationshipName": "registry"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdon",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "archived",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170615103004",
+    "entityTableName": "registry",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "registry",
+            "otherEntityName": "registry",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "caseField",
+            "otherEntityName": "caseFieldValue",
+            "otherEntityRelationshipName": "medicalCase"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "approvalStatus",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "createdon",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "archived",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "version",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170615103006",
+    "entityTableName": "medical_case",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

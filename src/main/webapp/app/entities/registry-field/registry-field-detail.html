@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>Registry Field</span> {{vm.registryField.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.registryField.name}}</span>
+        </dd>
+        <dt><span>Active</span></dt>
+        <dd>
+            <span>{{vm.registryField.active}}</span>
+        </dd>
+        <dt><span>Mandatory</span></dt>
+        <dd>
+            <span>{{vm.registryField.mandatory}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{vm.registryField.type}}</span>
+        </dd>
+        <dt><span>Max Length</span></dt>
+        <dd>
+            <span>{{vm.registryField.maxLength}}</span>
+        </dd>
+        <dt><span>Values</span></dt>
+        <dd>
+            <span>{{vm.registryField.values}}</span>
+        </dd>
+        <dt><span>Default Value</span></dt>
+        <dd>
+            <span>{{vm.registryField.defaultValue}}</span>
+        </dd>
+        <dt><span>Group</span></dt>
+        <dd>
+            <span>{{vm.registryField.group}}</span>
+        </dd>
+        <dt><span>Registry</span></dt>
+        <dd>
+            <a ui-sref="registry-detail({id:vm.registryField.registry.id})">{{vm.registryField.registry.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="registry-field-detail.edit({id:vm.registryField.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

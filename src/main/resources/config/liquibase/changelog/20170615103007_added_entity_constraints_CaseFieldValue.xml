@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity CaseFieldValue.
+    -->
+    <changeSet id="20170615103007-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="registry_field_id"
+                                 baseTableName="case_field_value"
+                                 constraintName="fk_case_field_value_registry_field_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="registry_field"/>
+
+        <addForeignKeyConstraint baseColumnNames="medical_case_id"
+                                 baseTableName="case_field_value"
+                                 constraintName="fk_case_field_value_medical_case_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="medical_case"/>
+
+    </changeSet>
+</databaseChangeLog>

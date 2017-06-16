@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Case Field Value</span> {{vm.caseFieldValue.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Value</span></dt>
+        <dd>
+            <span>{{vm.caseFieldValue.value}}</span>
+        </dd>
+        <dt><span>Registry Field</span></dt>
+        <dd>
+            <a ui-sref="registry-field-detail({id:vm.caseFieldValue.registryField.id})">{{vm.caseFieldValue.registryField.id}}</a>
+        </dd>
+        <dt><span>Medical Case</span></dt>
+        <dd>
+            <a ui-sref="medical-case-detail({id:vm.caseFieldValue.medicalCase.id})">{{vm.caseFieldValue.medicalCase.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="case-field-value-detail.edit({id:vm.caseFieldValue.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

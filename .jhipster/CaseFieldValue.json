@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "registryField",
+            "otherEntityName": "registryField",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "medicalCase",
+            "otherEntityName": "medicalCase",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170615103007",
+    "entityTableName": "case_field_value",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

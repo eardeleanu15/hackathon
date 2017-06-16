@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "registry",
+            "otherEntityName": "registry",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "caseField",
+            "otherEntityName": "caseFieldValue",
+            "otherEntityRelationshipName": "registryField"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "mandatory",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "FieldType",
+            "fieldValues": "TEXT,NUMERIC,DROPDOWN,MULTISELECT,CHECKBOX,FILE"
+        },
+        {
+            "fieldName": "maxLength",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "values",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultValue",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "group",
+            "fieldType": "FieldGroups",
+            "fieldValues": "ADMINISTRATIVE,CLINICAL"
+        }
+    ],
+    "changelogDate": "20170615103005",
+    "entityTableName": "registry_field",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no"
+}

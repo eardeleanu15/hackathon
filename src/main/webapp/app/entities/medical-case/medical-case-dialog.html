@@ -1,0 +1,55 @@
+<form name="editForm" role="form" ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myMedicalCaseLabel">Create or edit a Medical Case</h4>
+    </div>
+    <div class="modal-body container-fluid">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row">
+            <div class="form-group col-md-4" ng-show="vm.medicalCase.id">
+                ID: {{vm.medicalCase.id}}
+            </div>
+            <div class="form-group col-md-4">
+                <label class="control-label" for="field_approvalStatus">Approval Status</label>
+                <input type="checkbox" name="approvalStatus" id="field_approvalStatus"
+                       ng-model="vm.medicalCase.approvalStatus"/>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label class="control-label" for="field_archived">Archived</label>
+                <input type="checkbox" name="archived" id="field_archived"
+                       ng-model="vm.medicalCase.archived"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="field_registry">Registry</label>
+            <select ng-change="selectRegistry()" ng-init="selectRegistry()" class="form-control" id="field_registry" name="registry.id" ng-model="vm.medicalCase.registry" ng-options="registry as registry.name for registry in vm.registries track by registry.id">
+            </select>
+        </div>
+
+        <registry-field ng-if="!vm.medicalCase.caseFields"
+            class="form-group" ng-repeat="registryField in vm.selectedRegistry.registryFields track by $index"
+            registry-field="registryField"
+            remove-field="vm.removeField"
+            medical-case-id="vm.medicalCase.id"
+            ng-if="registryField.active"></registry-field>
+
+        <registry-field ng-if="vm.medicalCase.caseFields"
+            class="form-group" ng-repeat="caseField in vm.medicalCase.caseFields track by $index"
+            registry-field="caseField.registryField"
+            medical-case-id="vm.medicalCase.id"
+            case-field="caseField"></registry-field>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

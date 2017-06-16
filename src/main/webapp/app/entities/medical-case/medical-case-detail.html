@@ -1,0 +1,39 @@
+
+<div>
+    <span class="pull-right preset-date">Created on <span>{{vm.medicalCase.createdon | date:'mediumDate'}}</span></span>
+    <h2><span>Medical Case</span> #{{vm.medicalCase.id}}</h2>
+    <div>
+        <div>
+            <span ng-if="vm.medicalCase.version">Version {{vm.medicalCase.version}} |  <a href="#"><span class="fa fa-history"></span> History</a></span>
+        </div>
+        <span class="label label-warning" ng-class="{'label-success':vm.medicalCase.approvalStatus==true}">{{vm.medicalCase.approvalStatus?"Approved":"Not Approved"}}</span>
+        <span class="label label-default" ng-if="vm.medicalCase.archived==true">Archived</span>
+    </div>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span>Registry</span></dt>
+        <dd>
+            <a ui-sref="registry-detail({id:vm.medicalCase.registry.id})">{{vm.medicalCase.registry.name}}</a>
+        </dd>
+    </dl>
+    <dl class="dl-horizontal jh-entity-details" ng-repeat="caseField in vm.medicalCase.caseFields track by $index">
+        <dt><span>{{caseField.registryField.name}}</span></dt>
+        <dd ng-show="caseField.value">
+            <span ng-show="caseField.registryField.type !== 'FILE'">{{caseField.value}}</span>
+            <img src="/uploads/{{caseField.value}}" class="medical-case-image"
+                 ng-show="caseField.registryField.type === 'FILE'" />
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="medical-case-detail.edit({id:vm.medicalCase.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

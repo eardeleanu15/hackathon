@@ -1,0 +1,53 @@
+<div ng-switch="$ctrl.registryField.type">
+    <div ng-class="{required:$ctrl.registryField.mandatory==true}" ng-switch-when="TEXT">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <input type="text" class="form-control registry-field" data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}"
+               id="field-{{$ctrl.registryField.id}}" placeholder="{{$ctrl.registryField.name}}"
+               value="{{$ctrl.caseField.value || $ctrl.registryField.defaultValue}}" ng-required="$ctrl.registryField.mandatory" />
+    </div>
+
+    <div ng-class="{required:$ctrl.registryField.mandatory==true}" ng-switch-when="NUMERIC">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <input type="number" class="form-control registry-field"  data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}"
+               id="field-{{$ctrl.registryField.id}}" placeholder="{{$ctrl.registryField.name}}"
+               value="{{$ctrl.caseField.value || $ctrl.registryField.defaultValue}}" ng-required="$ctrl.registryField.mandatory" />
+    </div>
+
+    <div ng-switch-when="CHECKBOX">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <input type="checkbox" class="form-control registry-field" data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}"
+               id="field-{{$ctrl.registryField.id}}" value="" />
+    </div>
+
+    <div ng-switch-when="DROPDOWN">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <select class="form-control registry-field col-md-10"
+                data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}"
+                id="field-{{$ctrl.registryField.id}}"
+                ng-model="$ctrl.registryField.defaultValue" ng-options="value for value in $ctrl.getDropdownOptions()">
+        </select>
+    </div>
+
+    <div ng-switch-when="MULTI_SELECT">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <select class="form-control registry-field"
+                data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}"
+                id="field-{{$ctrl.registryField.id}}"
+                ng-model="$ctrl.registryField.defaultValue" ng-options="value for value in $ctrl.getDropdownOptions()"
+                multiple>
+        </select>
+    </div>
+
+    <div ng-switch-when="FILE">
+        <label class="control-label" for="field-{{$ctrl.registryField.id}}">{{$ctrl.registryField.name}}</label>
+        <input type="hidden" class="registry-field" value="{{$ctrl.caseField.value}}" id="field-{{$ctrl.registryField.id}}"
+               data-fieldvalue-id="{{$ctrl.caseField.id}}" data-field-id="{{$ctrl.registryField.id}}" />
+        <div class="form-control medical-case-image-container" >
+            <input type="file" nv-file-select uploader="$ctrl.uploader" />
+            <img src="/uploads/{{$ctrl.caseField.value}}" class="medical-case-image"
+                 ng-if="$ctrl.caseField.value && $ctrl.caseField.value !== 'false'" />
+        </div>
+
+    </div>
+</div>
+

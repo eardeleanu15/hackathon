@@ -1,0 +1,59 @@
+
+<form name="editForm" role="form" ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myRegistryLabel">Create or edit a Registry</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.registry.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.registry.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.registry.name"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_description">Description</label>
+            <textarea rows="5" cols="30" class="form-control" name="description" id="field_description"
+                   ng-model="vm.registry.description" />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_active">Status</label>
+            <select name="active" id="field_active" ng-model="vm.registry.active"
+                    ng-options="state.value as state.label for state in vm.activeStates"></select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_archived">Archived</label>
+                <input type="checkbox" name="archived" id="field_archived"
+                          ng-model="vm.registry.archived"/>
+        </div>
+
+    </div>
+    <div class="modal-body">
+        <h4>Manage registry fields</h4>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">Default value</div>
+            <div class="col-md-1">Active</div>
+            <div class="col-md-1">Mandatory</div>
+            <div class="col-md-2">Type</div>
+            <div class="col-md-2"></div>
+        </div>
+        <registry-field-edit ng-repeat="registryField in vm.registry.registryFields track by $index"
+                             registry-field="registryField" remove-field="vm.removeField"></registry-field-edit>
+        <button type="button" class="btn btn-default" ng-click="vm.addField()">
+            <span class="fa fa-plus"></span>
+            Add new field
+        </button>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" ng-disabled="vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

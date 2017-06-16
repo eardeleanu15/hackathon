@@ -1,0 +1,87 @@
+<div class="row medical-cases">
+    <div class="col-lg-6 my-details">
+        <h3>My details</h3>
+        <table class="jh-table table table-striped">
+            <tbody>
+                <tr>
+                    <td>First name</td>
+                    <td ng-bind="vm.user.firstName"></td>
+                </tr>
+                <tr>
+                    <td>Last name</td>
+                    <td ng-bind="vm.user.lastName"></td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td ng-bind="vm.user.gender"></td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td ng-bind="vm.user.email"></td>
+                </tr>
+                <tr>
+                    <td>CNP</td>
+                    <td ng-bind="vm.user.cnp"></td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td ng-bind="vm.user.phone"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-lg-6 table-responsive cases">
+        <h3 class="cases-title">
+            Medical Cases
+            <button class="btn btn-primary" ui-sref="medical-case.new" >
+                <span class="glyphicon glyphicon-plus"></span>
+                <span>Create new Medical Case</span>
+            </button>
+        </h3>
+        <jhi-alert></jhi-alert>
+
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr>
+                    <th><span>ID</span></th>
+                    <th><span>Created on</span></th>
+                    <th><span>Version</span></th>
+                    <th><span>Registry</span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="medicalCase in vm.medicalCases track by medicalCase.id">
+                    <td><a ui-sref="medical-case-detail({id:medicalCase.id})">{{medicalCase.id}}</a></td>
+                    <td>{{medicalCase.createdon | date:'mediumDate'}}</td>
+                    <td>{{medicalCase.version}}</td>
+                    <td>
+                        <a ui-sref="registry-detail({id:medicalCase.registry.id})">{{medicalCase.registry.name}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="medical-case-detail({id:medicalCase.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medical-case.edit({id:medicalCase.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="medical-case.delete({id:medicalCase.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

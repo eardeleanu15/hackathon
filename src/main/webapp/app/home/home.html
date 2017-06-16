@@ -1,0 +1,37 @@
+<div ng-cloak>
+    <div class="row">
+        <div class="col-md-12">
+            <div ng-switch="vm.isAuthenticated()">
+                <div ng-switch-when="true">
+                    <h1>Welcome, {{vm.account.firstName}}!</h1>
+                    <p class="lead">We are a non-profit organisation (NGO) for medical patients with national coverage, born from the will of choosing the people's interest when coming to health.</p>
+                    <p class="lead">Suntem un grup de cetațeni reprezentativ la nivel național cu o crestere rapidă care au hotarat să nu mai lase la voia intamplării modul in care sunt tratați, modul in care sunt cheltuiti banii platiți de noi pentru sănatate si nu in ultimul rand ce primim pentru banii pe care ii platim.</p>
+
+                    <registries></registries>
+                </div>
+
+                <div class="row home-unauthenticate" ng-switch-when="false">
+                    <div class="col-md-6">
+                        <p class="lead">We are a non-profit organisation (NGO) for medical patients with national coverage, born from the will of choosing the people's interest when coming to health.</p>
+                        <p class="lead">Suntem un grup de cetațeni reprezentativ la nivel național cu o crestere rapidă care au hotarat să nu mai lase la voia intamplării modul in care sunt tratați, modul in care sunt cheltuiti banii platiți de noi pentru sănatate si nu in ultimul rand ce primim pentru banii pe care ii platim.</p>
+
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="alert alert-warning clearfix">
+                            <a class="btn btn-lg btn-primary pull-right col-md-3" ng-click="vm.login()">Sign in</a>
+                            Please <a class="alert-link" href="">sign in</a> if you already have an account!
+                        </div>
+
+                        <div class="alert alert-warning clearfix">
+                            <a class="btn btn-lg btn-primary pull-right col-md-3" ui-sref="register">Register</a>
+                            You don't have an account yet? <a class="alert-link" ui-sref="register">Register a new account</a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

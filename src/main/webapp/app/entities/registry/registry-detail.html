@@ -1,0 +1,29 @@
+
+<div>
+    <span class="pull-right preset-date">Created on <span>{{vm.registry.createdon | date:'mediumDate'}}</span></span>
+    <h2><span>{{vm.registry.name}}</span> #{{vm.registry.id}}</h2>
+
+    <div>
+        <div>
+            <span ng-if="vm.medicalCase.version">Version {{vm.registry.version}} | <a href="#"><span class="fa fa-history"></span> History</a></span>
+        </div>
+        <span class="label label-warning" ng-class="{'label-success':vm.registry.approvalStatus==true}">{{vm.registry.approvalStatus?"Approved":"Not Approved"}}</span>
+        <span class="label label-default" ng-if="vm.registry.archived==true">Archived</span>
+    </div>
+    <hr />
+    <p>
+        {{vm.registry.description}}
+    </p>
+
+    <hr />
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="registry.edit({id:vm.registry.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>
